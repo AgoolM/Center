@@ -1,0 +1,42 @@
+{% extends 'mainapp/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Video create form</h4>
+          <p class="card-description">
+            Basic form layout
+          </p>
+          <form class="forms-sample" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputUsername1">Title</label>
+              {% render_field form.title type="text" class="form-control" id="exampleInputUsername1" placeholder="Title" %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputUsername1">Category</label>
+                {% render_field form.category type="double" class="form-control" id="exampleInputUsername1" placeholder="Interesting" %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputUsername1">Language</label>
+                {% render_field form.language type="double" class="form-control" id="exampleInputUsername1" placeholder="Interesting" %}
+            </div>
+            <div class="form-group">
+                <label for="exampleTextarea1">Description</label>
+                {% render_field form.description class="form-control" id="exampleTextarea1" rows="6" %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputUsername1">Video</label>
+                {% render_field form.video_url type="url" class="form-control" id="exampleInputUsername1" placeholder="Lesson qty 72" %}
+            </div>
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

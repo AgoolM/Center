@@ -1,0 +1,56 @@
+{% extends 'mainapp/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title mb-0">Mentees</p>
+          <div class="table-responsive">
+            <table class="table table-striped table-borderless">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Full name</th>
+                  <th>Birth Date</th>
+                  <th>Phone </th>
+                  <th>Pasport</th>
+                  <th>Group</th>
+                  <th>Register</th>
+                  <th>Up/De</th>
+                  <th>Paymaent</th>
+                </tr>  
+              </thead>
+              <tbody>
+                  {% for c in mentees %}
+                  <tr>
+                    <td>{{ c.id }}</td>
+                    <td class="font-weight-bold">{{ c.full_name }}</td>
+                    <td>{{ c.birth_date  }}</td>
+                    <td>{{ c.phone }}</td>
+                    <td>{{ c.passport }}</td>
+                    <td>{{ c.group  }}</td>
+                    <td>{{ c.register_date }}</td>
+                    <td>
+                      <a href="{% url 'mentee_u' c.id %}">
+                      <i class="ti-pencil btn-icon-prepend"></i></a>
+                      <a href="{% url 'mentee_d' c.id %}">
+                      <i class="ti-trash btn-icon-prepend"></i></a>
+                    </td>
+                    {% if c.payment == "PAYMENT" %}
+                        <td class="font-weight-medium"><div class="badge badge-success">{{ c.payment }}</div></td>
+                    {% else %}
+                        <td class="font-weight-medium"><div class="badge badge-danger">{{ c.payment }}</div></td>
+                    {% endif %}
+                  </tr>
+                  
+                    {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
