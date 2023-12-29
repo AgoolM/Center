@@ -1,0 +1,38 @@
+{% extends 'mainapp/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Group create form</h4>
+          <p class="card-description">
+            Basic form layout
+          </p>
+          <form class="forms-sample" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputUsername1">Title</label>
+              {% render_field form.title type="text" class="form-control" id="exampleInputUsername1" placeholder="Title" %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputUsername1"> Cuorse</label>
+                {% render_field form.cuorse type="double" class="form-control" id="exampleInputUsername1" placeholder="Python01" %}
+            </div>
+            <div class="form-group">
+                <label for="exampleTextarea1">Mentor</label>
+                {% render_field form.mentor type="double" class="form-control" id="exampleInputUsername1" placeholder="Mentor Name" %}
+            </div>
+            <div class="form-group">
+                <label for="exampleTextarea1">Group quantity</label>
+                {% render_field form.group_qyt type="number" class="form-control" id="exampleInputUsername1" placeholder="group qty 15" %}
+            </div>
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
